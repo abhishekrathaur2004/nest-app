@@ -12,6 +12,7 @@ export class AppModule implements NestModule {
   constructor(){
     console.log('app module started')
   }
+  // clased based module widdleware only for /note/reihufrf url
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleWare)
