@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { NoteService } from "./notes.service";
 import { Note } from "./data/notes.dto";
 
@@ -16,8 +16,17 @@ export class NoteController{
         return this.noteService.addNoteService(note);
     }
 
+    // lets see the concecpt of pipes in nest js
+    // dummy one
+    // @Delete('/:id')
+    // deleteNote(@Param("id", ParseIntPipe) noteteId : string){
+    //     return `Deleted request received.`
+    // }
+    // throwing error when sending id as characters in place of integers
+
+    // realone
     @Delete('/:id')
-    deleteNote(@Param("id") noteteId : string){
+    deleteNote(@Param("id", ParseIntPipe) noteteId : string){
         return this.noteService.deleteNoteService(noteteId);
     }
     @Put('/')
