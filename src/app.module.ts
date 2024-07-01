@@ -2,6 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { NoteMoudle } from './notes/notes.module';
 import { LoggerMiddleWare } from './middleware/logger.middleware';
 import { GuardModule } from './guards/guards.module';
+// import { InterceptorModule } from './interceptors/interceptor.module';
 
 
 @Module({
