@@ -1,9 +1,15 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { NoteService } from "./notes.service";
-import { Note } from "./data/notes.dto";
+// import { Note } from "./data/notes.dto";
+
 
 // imported custom pipe one:way
-import { NotePipe } from "./data/pipes/NotePipe.pipe";
+// import { NotePipe } from "./data/pipes/NotePipe.pipe";
+
+// imported 2nd way
+import { NotePipe } from "./data/pipes/NotePipe2.pipe";
+import { CreateNoteDto } from "./data/Notes2.dto";
+
 
 @Controller('note')
 export class NoteController{
@@ -17,7 +23,7 @@ export class NoteController{
     // writing custom pipe
 
     @Post('/')
-    addNotes(@Body(new NotePipe()) note: Note){
+    addNotes(@Body(new NotePipe()) note:CreateNoteDto){
         return this.noteService.addNoteService(note);
     }
 
@@ -34,9 +40,9 @@ export class NoteController{
     deleteNote(@Param("id", ParseIntPipe) noteteId : string){
         return this.noteService.deleteNoteService(noteteId);
     }
-    @Put('/')
-    updateNote(@Body() note : Note){
-        return this.noteService.updateNoteService(note);
-    }
+    // @Put('/')
+    // updateNote(@Body(new NotePipe()) note : Note){
+    //     return this.noteService.updateNoteService(note);
+    // }
 
 }
