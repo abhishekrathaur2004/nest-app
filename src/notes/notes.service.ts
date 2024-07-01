@@ -1,4 +1,4 @@
-import { Body, Injectable, Param } from "@nestjs/common";
+import { Injectable, Param } from "@nestjs/common";
 import { Note } from "./data/notes.dto";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,7 +7,7 @@ export class NoteService{
     public notes : Note[] = [];
 
     //add note
-    addNoteService(@Body() note : Note) : string{
+    addNoteService(note : Note) : string{
         note.id = uuidv4();
         this.notes.push(note);
         return `Note has been added successfully . ID : ${note.id}`

@@ -4,7 +4,7 @@ import { NextFunction } from 'express';
 
 // created global middleware 
 async function GlobalMiddleWare(req:Request , res:Response, next:NextFunction){
-  console.log(`Global Middlewafre`);
+  // console.log(`Global Middlewafre`);
   next();  
 }
 async function bootstrap() {

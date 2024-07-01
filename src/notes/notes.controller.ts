@@ -2,6 +2,9 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@
 import { NoteService } from "./notes.service";
 import { Note } from "./data/notes.dto";
 
+// imported custom pipe one:way
+import { NotePipe } from "./data/pipes/NotePipe.pipe";
+
 @Controller('note')
 export class NoteController{
     constructor(private readonly noteService : NoteService){};
@@ -11,8 +14,10 @@ export class NoteController{
         return this.noteService.getNotesService();
     }
 
+    // writing custom pipe
+
     @Post('/')
-    addNotes(@Body() note: Note){
+    addNotes(@Body(new NotePipe()) note: Note){
         return this.noteService.addNoteService(note);
     }
 
