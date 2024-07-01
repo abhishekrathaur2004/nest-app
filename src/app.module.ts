@@ -1,10 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { NoteMoudle } from './notes/notes.module';
 import { LoggerMiddleWare } from './middleware/logger.middleware';
+import { GuardModule } from './guards/guards.module';
 
 
 @Module({
-  imports: [NoteMoudle],
+  imports: [NoteMoudle,GuardModule],
   controllers: [],
   providers: [],
 })
