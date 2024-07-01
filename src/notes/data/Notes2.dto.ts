@@ -1,15 +1,15 @@
-// annoter based validation
+// // annoter based validation
 
-import { IsString, IsInt } from 'class-validator';
+// import { IsString, IsInt } from 'class-validator';
 
-export class CreateNoteDto {
+// export class CreateNoteDto {
 
-  @IsString()
-  title: string;
+//   @IsString()
+//   title: string;
 
-  @IsString()
-  id: string;
+//   @IsString()
+//   id: string;
 
-  @IsString()
-  content: string;
-}
+//   @IsString()
+//   content: string;
+// }

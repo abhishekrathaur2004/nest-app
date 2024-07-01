@@ -1,15 +1,17 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, ValidationPipe } from "@nestjs/common";
 import { NoteService } from "./notes.service";
-// import { Note } from "./data/notes.dto";
-
+import { Note } from "./data/notes.dto";
 
 // imported custom pipe one:way
 // import { NotePipe } from "./data/pipes/NotePipe.pipe";
 
 // imported 2nd way
-import { NotePipe } from "./data/pipes/NotePipe2.pipe";
-import { CreateNoteDto } from "./data/Notes2.dto";
+// import { NotePipe } from "./data/pipes/NotePipe2.pipe";
+// import { CreateNoteDto } from "./data/Notes2.dto";
 
+// lets do by 3rd way using ValidationPipe
+// this is the simplest form of validation using done through pipe
+// imported above 
 
 @Controller('note')
 export class NoteController{
@@ -21,9 +23,9 @@ export class NoteController{
     }
 
     // writing custom pipe
-
+    // new ValidationPipe will work accordingly with noteDTO
     @Post('/')
-    addNotes(@Body(new NotePipe()) note:CreateNoteDto){
+    addNotes(@Body() note:Note){
         return this.noteService.addNoteService(note);
     }
 
@@ -40,9 +42,9 @@ export class NoteController{
     deleteNote(@Param("id", ParseIntPipe) noteteId : string){
         return this.noteService.deleteNoteService(noteteId);
     }
-    // @Put('/')
-    // updateNote(@Body(new NotePipe()) note : Note){
-    //     return this.noteService.updateNoteService(note);
-    // }
+    @Put('/')
+    updateNote(@Body() note : Note){
+        return this.noteService.updateNoteService(note);
+    }
 
 }
